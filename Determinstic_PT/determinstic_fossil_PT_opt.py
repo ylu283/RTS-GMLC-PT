@@ -70,9 +70,9 @@ def build_fossil_gen_operation_model(m, params):
     # m.shutdown_cost = pyo.Expression(expr=0 * m.shutdown)
 
     # for multiple type startup, define the startup costs based on the type
-    types = ["hot", "warm", "cold"]
+    # types = ["hot", "warm", "cold"]
     cost_list = {type_: params["fuel_p"]*params["start_heat_" + type_] for type_ in types}
-    m.startup_cost = pyo.Expression(expr=sum(m.startup_type_vars[k]*cost_list[k] for k in m.startup_type_vars))
+    # m.startup_cost = pyo.Expression(expr=sum(m.startup_type_vars[k]*cost_list[k] for k in m.startup_type_vars))
     m.shutdown_cost = pyo.Expression(expr=0 * m.shutdown)
 
     return
@@ -81,13 +81,13 @@ def build_fossil_gen_operation_model(m, params):
 def build_fossil_gen_flowsheet(m, params):
     """Builds the fossil generator flowsheet"""
     types = ["hot", "warm", "cold"]
-    startup_types = {type_: params["start_up_time_" + type_] for type_ in types}
+    # startup_types = {type_: params["start_up_time_" + type_] for type_ in types}
     setattr(m, 
             "gen_" + params["name"],
             OperationModel(
                 model_func=build_fossil_gen_operation_model,
                 model_args={"params": params},
-                startup_types=startup_types
+                # startup_types=startup_types
         )
     )
 
@@ -138,13 +138,13 @@ def determinstic_fossil_profit_opt(params, lmp_data, dispatch_data, configuratio
     )
 
     # Add minimum uptime-downtime constraints on the unit
-    types = ["hot", "warm", "cold"]
-    startup_transition_time = {type_: params["start_up_time_" + type_] for type_ in types}
+    # types = ["hot", "warm", "cold"]
+    # startup_transition_time = {type_: params["start_up_time_" + type_] for type_ in types}
     m.add_startup_shutdown(
         op_block_name="gen_" + params["name"],
         minimum_up_time=params["min_up_time"],
         minimum_down_time=params["min_down_time"],
-        startup_transition_time=startup_transition_time,
+        # startup_transition_time=startup_transition_time,
     )
 
     # Add ramping constraints on the unit
