@@ -172,15 +172,15 @@ def _read_df(df_type, renew=False):
         gen_dict['max_p'] = row['PMax MW']
         gen_dict['min_p'] = row['PMin MW']
         gen_dict['ramp'] = row['Ramp Rate MW/Min'] * 60    # ramp rate should be MW/hr
-        gen_dict['fuel_p'] = row['Fuel Price $/MMBTU']
+        gen_dict['fuel_p'] = row['Fuel Price $/MMBTU'] # ??? need to be updated by Kyle's side
         gen_dict['min_down_time'] = int(np.round(row['Min Down Time Hr'], 0))    # should be rounded to an integer
         gen_dict['min_up_time'] = int(np.round(row['Min Up Time Hr'], 0))    # should be rounded to an integer
-        gen_dict['start_up_time_hot'] = int(np.round(row['Start Time Hot Hr'], 0))
-        gen_dict['start_up_time_warm'] = int(np.round(row['Start Time Warm Hr'], 0))
-        gen_dict['start_up_time_cold'] = int(np.round(row['Start Time Cold Hr'], 0))
-        gen_dict['start_heat_hot'] = row['Start Heat Hot MBTU']
-        gen_dict['start_heat_warm'] = row['Start Heat Warm MBTU']
-        gen_dict['start_heat_cold'] = row['Start Heat Cold MBTU']
+        gen_dict['start_up_time_hot'] = int(np.round(row['Start Time Hot Hr'], 0)) # ???
+        gen_dict['start_up_time_warm'] = int(np.round(row['Start Time Warm Hr'], 0)) # ???
+        gen_dict['start_up_time_cold'] = int(np.round(row['Start Time Cold Hr'], 0)) # ???
+        gen_dict['start_heat_hot'] = row['Start Heat Hot MBTU'] # ???
+        gen_dict['start_heat_warm'] = row['Start Heat Warm MBTU'] # ???
+        gen_dict['start_heat_cold'] = row['Start Heat Cold MBTU'] # ???
         if not renew:
             gen_dict['cost_curve'] = gen_param_dict[gen_name]
         else:
