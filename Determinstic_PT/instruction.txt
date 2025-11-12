@@ -1,0 +1,13 @@
+Here is a breif instruction for using determinstic pt
+
+For PT analysis
+The first step is to convert Prescient results into desirable forms, which includes:
+1. Generating 'gen.json'
+    This step uses Test_utils.ipynb
+    Check input data file directory, column names
+
+    The function code for generating gen_dict.json is in 'customized_d_pt/utils.py'
+
+    1.1. before running Test_utils.ipynb
+        make sure Data folder contains the Prescient results
+        Need 'gen.csv', 'bus.csv', 'cost_curve.json'
